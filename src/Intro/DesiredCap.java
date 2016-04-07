@@ -3,7 +3,6 @@ package Intro;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.remote.MobilePlatform;
-import org.junit.Test;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.io.File;
@@ -12,11 +11,13 @@ import java.net.URL;
 
 
 public class DesiredCap {
+   public static void main(String[] args) throws MalformedURLException {
+      test();
+   }
 
-   @Test
-   public void test() throws MalformedURLException {
+   public static void test() throws MalformedURLException {
       File appDir = new File("src");
-      File app = new File(appDir, "app.apk");
+      File app = new File(appDir, "BookMyShow.apk");
 
       DesiredCapabilities cap = new DesiredCapabilities();
       cap.setCapability(MobileCapabilityType.PLATFORM_NAME, MobilePlatform.ANDROID);
