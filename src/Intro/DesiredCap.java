@@ -3,6 +3,7 @@ package Intro;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.remote.MobilePlatform;
+import org.junit.Test;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.io.File;
@@ -12,6 +13,7 @@ import java.net.URL;
 
 public class DesiredCap {
 
+   @Test
    public void test() throws MalformedURLException {
       File appDir = new File("src");
       File app = new File(appDir, "app.apk");
