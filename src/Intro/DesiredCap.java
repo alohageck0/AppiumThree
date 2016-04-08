@@ -21,7 +21,7 @@ public class DesiredCap {
    public void test() throws MalformedURLException, InterruptedException {
       File appDir = new File("src");
       File app = new File(appDir, "BookMyShow.apk");
-
+// should be in every script
       DesiredCapabilities cap = new DesiredCapabilities();
       cap.setCapability(MobileCapabilityType.PLATFORM_NAME, MobilePlatform.ANDROID);
       cap.setCapability(MobileCapabilityType.DEVICE_NAME, "Moto");
