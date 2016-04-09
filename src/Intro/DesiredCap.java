@@ -13,9 +13,6 @@ import java.util.concurrent.TimeUnit;
 
 
 public class DesiredCap {
-//   public static void main(String[] args) throws MalformedURLException {
-//      test();
-//   }
 
    @Test
    public void test() throws MalformedURLException, InterruptedException {
