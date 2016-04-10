@@ -8,11 +8,13 @@ import io.appium.java_client.remote.MobilePlatform;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 
 public class UiSelect {
    private ServerArguments serverArguments = new ServerArguments();
@@ -47,7 +49,9 @@ public class UiSelect {
       cap.setCapability(MobileCapabilityType.APP, app.getAbsolutePath());
       AndroidDriver driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), cap);
 
-//      driver.findElementByAndroidUIAutomator(new UI);
+      List<WebElement> list = driver.findElementsByAndroidUIAutomator("new UiSelector().clickable(true)");
+      System.out.println(list.size());
+      driver.findElementByAndroidUIAutomator("new UiSelector().text(\"Preference\")").click();
 
 
    }
