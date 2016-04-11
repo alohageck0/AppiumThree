@@ -47,7 +47,7 @@ public class RaggaTest_37 {
       DesiredCapabilities cap = new DesiredCapabilities();
       cap.setCapability(MobileCapabilityType.PLATFORM_NAME, MobilePlatform.ANDROID);
       cap.setCapability(MobileCapabilityType.DEVICE_NAME, "Android device");
-      cap.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, 20);
+      cap.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, 200);
       cap.setCapability(MobileCapabilityType.APP, app.getAbsolutePath());
       cap.setCapability(MobileCapabilityType.NO_RESET, true);
 
@@ -55,12 +55,29 @@ public class RaggaTest_37 {
 
       driver.scrollTo("Trending");
 
-      List<WebElement> buttons = driver.findElementsByClassName("android.widget.RelativeLayout");
+//      List<WebElement> buttons = driver.findElementsByClassName("android.widget.RelativeLayout");
+
+      WebElement trendingButton = driver.findElementByAndroidUIAutomator("new UiSelector().text(\"Trending\")");
+
       TouchAction touchAction = new TouchAction(driver);
-      touchAction.tap(buttons.get(14)).perform();
+//      touchAction.tap(buttons.get(14)).perform();
+      touchAction.tap(trendingButton).perform();
 
       String screenTitle = driver.findElementById("com.raaga.android:id/music_album_title").getText();
       Assert.assertEquals("Trending", screenTitle);
+
+      List<WebElement> songs = driver.findElementsByClassName("android.widget.TextView");
+      for (WebElement s : songs) {
+         driver.scrollTo(s.getText());
+         if (s.getText().equals("Sitamma Vakitlo")) {
+            touchAction.tap(s).perform();
+            break;
+         }
+      }
+//      song = driver.findElementByAndroidUIAutomator("new UiSelector().text(\"Sitamma Vakitlo\")");
+      WebElement playAllButton = driver.findElementById("com.raaga.android:id/controls_play_song");
+      touchAction.tap(playAllButton).perform();
+
 
    }
 
