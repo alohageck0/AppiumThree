@@ -2,13 +2,12 @@ package Intro;
 
 import com.github.genium_framework.appium.support.server.AppiumServer;
 import com.github.genium_framework.server.ServerArguments;
+import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.remote.MobilePlatform;
-import org.junit.After;
-import org.junit.Before;
+import org.junit.Assert;
 import org.junit.Test;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
@@ -21,23 +20,23 @@ public class RaggaTest_37 {
    private ServerArguments serverArguments = new ServerArguments();
    private AppiumServer appiumServer;
 
-   @Before
-   public void startUp() {
-      serverArguments = new ServerArguments();
-      serverArguments.setArgument("--address", "127.0.0.1");
-
-      serverArguments.setArgument("--no-reset", true);
-
-      serverArguments.setArgument("--local-timezone", true);
-      serverArguments.setArgument("--device-ready-timeout", "10");
-      appiumServer = new AppiumServer(serverArguments);
-      appiumServer.startServer();
-   }
-
-   @After
-   public void cleanUp() {
-      appiumServer.stopServer();
-   }
+//   @Before
+//   public void startUp() {
+//      serverArguments = new ServerArguments();
+//      serverArguments.setArgument("--address", "127.0.0.1");
+//
+//      serverArguments.setArgument("--no-reset", true);
+//
+//      serverArguments.setArgument("--local-timezone", true);
+//      serverArguments.setArgument("--device-ready-timeout", "10");
+//      appiumServer = new AppiumServer(serverArguments);
+//      appiumServer.startServer();
+//   }
+//
+//   @After
+//   public void cleanUp() {
+//      appiumServer.stopServer();
+//   }
 
    @Test
    public void test() throws MalformedURLException {
@@ -50,12 +49,21 @@ public class RaggaTest_37 {
       cap.setCapability(MobileCapabilityType.DEVICE_NAME, "Android device");
       cap.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, 20);
       cap.setCapability(MobileCapabilityType.APP, app.getAbsolutePath());
+      cap.setCapability(MobileCapabilityType.NO_RESET, true);
 
       AndroidDriver driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), cap);
 
       driver.scrollTo("Trending");
-      List<WebElement> buttons = driver.findElements(By.className("android.widget.RelativeLayout"));
-      buttons.get(15).click();
+
+//      driver.context("NATIVE_APP");
+//      WebElement button = driver.findElementByAndroidUIAutomator("new UiSelector().text(\"Trending\")");
+      List<WebElement> buttons = driver.findElementsByClassName("android.widget.RelativeLayout");
+//buttons.get(15).click();
+      TouchAction touchAction = new TouchAction(driver);
+      touchAction.tap(buttons.get(14)).perform();
+
+      String screenTitle = driver.findElementById("com.raaga.android:id/music_album_title").getText();
+      Assert.assertEquals("Trending", screenTitle);
 
    }
 
