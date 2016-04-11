@@ -66,19 +66,21 @@ public class RaggaTest_37 {
       String screenTitle = driver.findElementById("com.raaga.android:id/music_album_title").getText();
       Assert.assertEquals("Trending", screenTitle);
 
+      System.out.println(driver.getContext());
+
+      driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().textContains(\"Sitamma Vakitlo\").instance(0))");
       List<WebElement> songs = driver.findElementsByClassName("android.widget.TextView");
       for (WebElement s : songs) {
-         driver.scrollTo(s.getText());
          if (s.getText().equals("Sitamma Vakitlo")) {
             touchAction.tap(s).perform();
             break;
          }
       }
-//      song = driver.findElementByAndroidUIAutomator("new UiSelector().text(\"Sitamma Vakitlo\")");
       WebElement playAllButton = driver.findElementById("com.raaga.android:id/controls_play_song");
       touchAction.tap(playAllButton).perform();
 
 
    }
+
 
 }
