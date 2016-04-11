@@ -55,10 +55,7 @@ public class RaggaTest_37 {
 
       driver.scrollTo("Trending");
 
-//      driver.context("NATIVE_APP");
-//      WebElement button = driver.findElementByAndroidUIAutomator("new UiSelector().text(\"Trending\")");
       List<WebElement> buttons = driver.findElementsByClassName("android.widget.RelativeLayout");
-//buttons.get(15).click();
       TouchAction touchAction = new TouchAction(driver);
       touchAction.tap(buttons.get(14)).perform();
 
