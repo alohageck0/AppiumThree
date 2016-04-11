@@ -8,11 +8,14 @@ import io.appium.java_client.remote.MobilePlatform;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 
 public class RaggaTest_37 {
    private ServerArguments serverArguments = new ServerArguments();
@@ -50,6 +53,9 @@ public class RaggaTest_37 {
 
       AndroidDriver driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), cap);
 
+      driver.scrollTo("Trending");
+      List<WebElement> buttons = driver.findElements(By.className("android.widget.RelativeLayout"));
+      buttons.get(15).click();
 
    }
 
