@@ -14,8 +14,6 @@ import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import static com.sun.tools.doclint.Entity.cap;
-
 public class PackageActivity {
    private ServerArguments serverArguments = new ServerArguments();
    private AppiumServer appiumServer;
@@ -47,6 +45,8 @@ public class PackageActivity {
       cap.setCapability(MobileCapabilityType.PLATFORM_NAME, MobilePlatform.ANDROID);
       cap.setCapability(MobileCapabilityType.DEVICE_NAME, "Android device");
       cap.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, 20);
+      cap.setCapability("appPackage", "net.one97.paytm");
+      cap.setCapability("appActivity", "net.one97.paytm.AJRMainActivity");
 
       AndroidDriver driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), cap);
 
