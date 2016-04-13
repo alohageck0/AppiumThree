@@ -1,20 +1,22 @@
-package Intro;
-
 import com.github.genium_framework.appium.support.server.AppiumServer;
 import com.github.genium_framework.server.ServerArguments;
+import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.remote.MobilePlatform;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 
-public class Gestures1 {
+public class Touch {
    private ServerArguments serverArguments = new ServerArguments();
    private AppiumServer appiumServer;
 
@@ -51,12 +53,10 @@ public class Gestures1 {
       System.out.println(driver.isLocked());
       System.out.println(driver.getContext());
 
-//      driver.installApp("");
+      List<WebElement> abc = driver.findElements(By.className("android.widget.TextView"));
+      TouchAction touchAction = new TouchAction(driver);
+      touchAction.tap(abc.get(3)).perform();
 
-
-      driver.closeApp();
-//      driver.currentActivity();
-//      driver.context()
    }
 
 }

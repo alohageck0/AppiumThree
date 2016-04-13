@@ -1,22 +1,18 @@
-package Intro;
-
 import com.github.genium_framework.appium.support.server.AppiumServer;
 import com.github.genium_framework.server.ServerArguments;
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.AndroidKeyCode;
 import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.remote.MobilePlatform;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.By;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class KeyEventsHandling {
+public class PackageActivity {
    private ServerArguments serverArguments = new ServerArguments();
    private AppiumServer appiumServer;
 
@@ -41,16 +37,18 @@ public class KeyEventsHandling {
    @Test
    public void test() throws MalformedURLException {
       File appDir = new File("src");
-      File app = new File(appDir, "com.digitalchemy.calculator.freedecimal.apk");
+
+
       DesiredCapabilities cap = new DesiredCapabilities();
       cap.setCapability(MobileCapabilityType.PLATFORM_NAME, MobilePlatform.ANDROID);
-      cap.setCapability(MobileCapabilityType.DEVICE_NAME, "Moto");
+      cap.setCapability(MobileCapabilityType.DEVICE_NAME, "Android device");
       cap.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, 20);
-      cap.setCapability(MobileCapabilityType.APP, app.getAbsolutePath());
+      cap.setCapability("appPackage", "net.one97.paytm");
+      cap.setCapability("appActivity", "net.one97.paytm.AJRMainActivity");
+
       AndroidDriver driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), cap);
 
-      System.out.println(driver.findElementByClassName("android.widget.HorizontalScrollView").findElement(By.className("android.view.View")).getText());
-      driver.pressKeyCode(AndroidKeyCode.HOME);
+
    }
 
 }
