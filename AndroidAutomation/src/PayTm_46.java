@@ -2,6 +2,7 @@ import com.github.genium_framework.appium.support.server.AppiumServer;
 import com.github.genium_framework.server.ServerArguments;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidKeyCode;
 import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.remote.MobilePlatform;
 import org.junit.After;
@@ -65,6 +66,9 @@ public class PayTm_46 {
 //      driver.scrollTo("Mumbai");
       driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().textContains(\"Mumbai\").instance(0))");
       touchAction.tap(driver.findElementByAndroidUIAutomator("new UiSelector().text(\"Mumbai\")")).perform();
-
+      touchAction.tap(driver.findElementById("net.one97.paytm:id/edit_amount")).perform();
+      driver.findElementById("net.one97.paytm:id/edit_amount").sendKeys("150");
+      touchAction.tap(driver.findElementById("net.one97.paytm:id/radio_postpaid")).perform();
+      driver.pressKeyCode(AndroidKeyCode.BACK);
    }
 }
