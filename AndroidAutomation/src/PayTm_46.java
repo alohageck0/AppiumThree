@@ -6,6 +6,7 @@ import io.appium.java_client.android.AndroidKeyCode;
 import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.remote.MobilePlatform;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -52,6 +53,7 @@ public class PayTm_46 {
       AndroidDriver driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), cap);
       Thread.sleep(7000);
 
+      String amountToRecharge = "150";
       try {
          driver.swipe(50, 100, 60, 120, 1000);
       } catch (Exception e) {
@@ -67,8 +69,15 @@ public class PayTm_46 {
       driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().textContains(\"Mumbai\").instance(0))");
       touchAction.tap(driver.findElementByAndroidUIAutomator("new UiSelector().text(\"Mumbai\")")).perform();
       touchAction.tap(driver.findElementById("net.one97.paytm:id/edit_amount")).perform();
-      driver.findElementById("net.one97.paytm:id/edit_amount").sendKeys("150");
+      driver.findElementById("net.one97.paytm:id/edit_amount").sendKeys(amountToRecharge);
       touchAction.tap(driver.findElementById("net.one97.paytm:id/radio_postpaid")).perform();
       driver.pressKeyCode(AndroidKeyCode.BACK);
+
+      String textWithoutCheckBox = driver.findElementById("net.one97.paytm:id/proceed_btn").getText();
+      Assert.assertEquals("Proceed to Pay Bill", textWithoutCheckBox);
+      touchAction.tap(driver.findElementById("net.one97.paytm:id/radio_fast_forward")).perform();
+      String textAfterCheckBox = driver.findElementById("net.one97.paytm:id/proceed_btn").getText();
+      Assert.assertEquals("Proceed to Pay Rs " + amountToRecharge, textAfterCheckBox);
+
    }
 }
