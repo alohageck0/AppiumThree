@@ -4,18 +4,17 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.remote.MobilePlatform;
 import org.junit.Test;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.By;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.List;
 
 public class Lec_51 {
    private ServerArguments serverArguments = new ServerArguments();
    private AppiumServer appiumServer;
-
+//
 //   @Before
 //   public void startUp() {
 //      serverArguments.setArgument("--address", "127.0.0.1");
@@ -52,17 +51,26 @@ public class Lec_51 {
       Thread.sleep(3000);
       driver.findElementByCssSelector(".white-link.ud_i_search.fxac").click();
       Thread.sleep(2000);
-
-//      driver.findElementByXPath("html/body/div[1]/div/div[1]/div[3]/div[2]/div/form/input[1]").click();
       driver.findElementByCssSelector(".dropdown-menu.search-v4-wrap.ud-angular-loaded").click();
-      Thread.sleep(2000);
 
-//      driver.findElementByCssSelector(".search-input.ui-autocomplete-input.quick-search.ng-pristine.ng-untouched.ng-valid.ng-valid-maxlength").sendKeys("sdsd");
-      driver.findElementById("searchbox").sendKeys("dwdwd");
+//      JavascriptExecutor jse = (JavascriptExecutor) driver;
+//      jse.executeScript("document.getElementsByName('src')[0].setAttribute('type', 'text');");
+//      jse.executeScript("document.getElementByXpath('//*[@id=\"searchbox\"]/input[2]').setAttribute('type', 'text');");
+//      driver.findElement(By.xpath("//*[@id=\"searchbox\"]/input[2]")).clear();
+      driver.findElement(By.xpath("//*[@id=\"searchbox\"]/input[2]")).sendKeys("soapui");
 
-      driver.findElementByCssSelector(".ud_i_search.search-btn").click();
-      List<WebElement> titles = driver.findElementsByCssSelector(".title.bold.fs15-force.ng-binding");
-      System.out.println(titles.get(0).getText());
+
+//      driver.findElement(By.xpath("//form[@id='searchbox']/input[1]")).sendKeys("soapui");
+////      driver.findElementByXPath("html/body/div[1]/div/div[1]/div[3]/div[2]/div/form/input[1]").click();
+//      Thread.sleep(2000);
+////      driver.findElementByCssSelector(".dropdown-menu.search-v4-wrap.ud-angular-loaded").sendKeys("sdfsd");
+//
+////      driver.findElementByClassName("ng-pristine ng-valid ng-valid-maxlength").sendKeys("sdsd");
+//      driver.findElementById("searchbox").sendKeys("dwdwd");
+//
+//      driver.findElementByCssSelector(".ud_i_search.search-btn").click();
+//      List<WebElement> titles = driver.findElementsByCssSelector(".title.bold.fs15-force.ng-binding");
+//      System.out.println(titles.get(0).getText());
 
    }
 }
