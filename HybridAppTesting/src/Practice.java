@@ -62,7 +62,8 @@ public class Practice {
       driver.findElementByAndroidUIAutomator("new UiSelector().descriptionContains(\"Jones\")").click();
 
       set = driver.getContextHandles();
-      System.out.println(set.size());
+//      System.out.println(set.size());
+
    }
 
 }
