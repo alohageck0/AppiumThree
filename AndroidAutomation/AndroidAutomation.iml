@@ -7,18 +7,5 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="file://$USER_HOME$/Documents/Appium" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="file://$USER_HOME$/Documents/Appium" />
-        </SOURCES>
-        <jarDirectory url="file://$USER_HOME$/Documents/Appium" recursive="false" />
-        <jarDirectory url="file://$USER_HOME$/Documents/Appium" recursive="false" type="SOURCES" />
-      </library>
-    </orderEntry>
   </component>
 </module>

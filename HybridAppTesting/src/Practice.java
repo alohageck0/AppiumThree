@@ -3,7 +3,6 @@ import com.github.genium_framework.server.ServerArguments;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Platform;
@@ -16,12 +15,14 @@ import java.net.URL;
 import java.util.List;
 import java.util.Set;
 
+
+
 public class Practice {
    private ServerArguments serverArguments = new ServerArguments();
    private AppiumServer appiumServer;
    private DesiredCapabilities capabilities = new DesiredCapabilities();
 
-   @Before
+
    public void startUp() {
       serverArguments = new ServerArguments();
       serverArguments.setArgument("--address", "127.0.0.1");

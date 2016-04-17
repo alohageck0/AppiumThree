@@ -10,6 +10,7 @@
 
 
     <dependencies>
+
         <dependency>
             <groupId>io.appium</groupId>
             <artifactId>java-client</artifactId>
@@ -25,6 +26,12 @@
             <groupId>com.github.genium-framework</groupId>
             <artifactId>Appium-Support</artifactId>
             <version>1.0.5</version>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
         </dependency>
 
 
