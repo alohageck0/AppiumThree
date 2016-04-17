@@ -48,6 +48,7 @@ public class Practice {
       capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Android device");
       capabilities.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, 20);
       capabilities.setCapability(MobileCapabilityType.APP, app.getAbsolutePath());
+//      capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "selendroid");
 
       AndroidDriver driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
 
@@ -62,8 +63,13 @@ public class Practice {
       driver.findElementByAndroidUIAutomator("new UiSelector().descriptionContains(\"Jones\")").click();
 
       set = driver.getContextHandles();
-//      System.out.println(set.size());
-      //next
+      System.out.println(set.size());
+      for (String s : set) {
+         System.out.println(s);
+      }
+
+      List<WebElement> buttons = driver.findElements(By.className("android.view.View"));
+      buttons.get(3).click();
 
    }
 
