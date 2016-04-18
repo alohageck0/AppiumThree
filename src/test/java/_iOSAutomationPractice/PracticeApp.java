@@ -7,6 +7,7 @@ import io.appium.java_client.remote.MobileCapabilityType;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.io.File;
@@ -42,13 +43,13 @@ public class PracticeApp {
 
    @After
    public void cleanUp() {
-      appiumServer.stopServer();
+//      appiumServer.stopServer();
 
    }
 
    @Test
    public void Test() throws MalformedURLException {
-
+      driver.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[4]")).click();
 
    }
 }
