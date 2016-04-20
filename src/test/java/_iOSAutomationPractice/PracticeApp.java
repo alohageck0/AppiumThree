@@ -51,7 +51,7 @@ public class PracticeApp {
    }
 
    @Test
-   public void Test() {
+   public void Switchers() {
       TouchAction touchAction = new TouchAction(driver);
       touchAction.tap(driver.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[2]"))).perform();
 
@@ -64,6 +64,14 @@ public class PracticeApp {
 
       touchAction.tap(w).perform();
       Assert.assertEquals("0", w.getAttribute("value"));
+
+   }
+
+   @Test
+   public void Picker() {
+      TouchAction touchAction = new TouchAction(driver);
+//      touchAction.tap(driver.findElement(By.name("Picker"))).perform();
+
 
    }
 }
