@@ -36,11 +36,13 @@ public class PracticeApp {
 //      appiumServer = new AppiumServer(serverArguments);
 //      appiumServer.startServer();
 
+      capabilities.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, "5");
       capabilities.setCapability(MobileCapabilityType.APP, app.getAbsolutePath());
       capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "9.3");
       capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "iPhone 4s");
       capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, "");
       driver = new IOSDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+
 
    }
 
@@ -50,7 +52,7 @@ public class PracticeApp {
 
    }
 
-   @Test
+   //   @Test
    public void Switchers() {
       TouchAction touchAction = new TouchAction(driver);
       touchAction.tap(driver.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[2]"))).perform();
@@ -68,10 +70,18 @@ public class PracticeApp {
    }
 
    @Test
-   public void Picker() {
+   public void Pickers() {
       TouchAction touchAction = new TouchAction(driver);
-//      touchAction.tap(driver.findElement(By.name("Picker"))).perform();
+      //Open pickers screen
+      touchAction.tap(driver.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[6]"))).perform();
 
+      //Choose Serena Auroux
+      String nameToTest = "Serena Auroux";
+      String numberToTest = "3";
+      driver.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAPicker[1]/UIAPickerWheel[1]")).sendKeys(nameToTest);
+      driver.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAPicker[1]/UIAPickerWheel[2]")).sendKeys(numberToTest);
+      String result = driver.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAStaticText[1]")).getText();
+      Assert.assertEquals(nameToTest + " - " + numberToTest, result);
 
    }
 }
