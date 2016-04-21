@@ -1,7 +1,5 @@
 package _iOSAutomationPractice;
 
-import com.github.genium_framework.appium.support.server.AppiumServer;
-import com.github.genium_framework.server.ServerArguments;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 import org.junit.Before;
@@ -13,10 +11,7 @@ import java.net.URL;
 
 public class SafariAutomation {
    private DesiredCapabilities capabilities = new DesiredCapabilities();
-   //   private File app = new File("/Users/royalfiish/IdeaProjects/UdemyAppium/src/test/java/_iOSAutomationPractice/UICatalog.app");
    private IOSDriver driver;
-   private ServerArguments serverArguments = new ServerArguments();
-   private AppiumServer appiumServer;
 
    @Before
    public void setUp() throws MalformedURLException {
