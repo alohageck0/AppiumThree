@@ -31,6 +31,10 @@ public class SafariAutomation {
 
    @Test
    public void Test() {
-      driver.get("http://yahoo.com");
+      driver.get("http://gmail.com");
+      driver.findElementByName("Email").sendKeys("Test");
+      driver.findElementByName("Passwd").sendKeys("Test");
+      driver.findElementByName("signIn").click();
+
    }
 }
