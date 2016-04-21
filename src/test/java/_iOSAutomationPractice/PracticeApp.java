@@ -36,6 +36,7 @@ public class PracticeApp {
 //      appiumServer = new AppiumServer(serverArguments);
 //      appiumServer.startServer();
 
+//      capabilities.setCapability("waitForAppScript", "$.delay(3000); $.acceptAlert();");
       capabilities.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, "5");
       capabilities.setCapability(MobileCapabilityType.APP, app.getAbsolutePath());
       capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "9.3");
@@ -69,7 +70,7 @@ public class PracticeApp {
 
    }
 
-   @Test
+   //   @Test
    public void Pickers() {
       TouchAction touchAction = new TouchAction(driver);
       //Open pickers screen
@@ -82,6 +83,30 @@ public class PracticeApp {
       driver.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAPicker[1]/UIAPickerWheel[2]")).sendKeys(numberToTest);
       String result = driver.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAStaticText[1]")).getText();
       Assert.assertEquals(nameToTest + " - " + numberToTest, result);
+
+   }
+
+   @Test
+   public void Alerts() throws InterruptedException {
+      TouchAction touchAction = new TouchAction(driver);
+      //Open Alerts screen
+      touchAction.tap(driver.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[11]"))).perform();
+
+      //Simple alert
+      touchAction.tap(driver.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIAStaticText[1]"))).perform();
+      //Handle alert
+//      Thread.sleep(8000);
+      driver.switchTo().alert().accept();
+
+      //OK-Cancel
+      touchAction.tap(driver.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[3]/UIAStaticText[1]"))).perform();
+      //Handle alert
+      driver.switchTo().alert().accept();
+      touchAction.tap(driver.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[3]/UIAStaticText[1]"))).perform();
+      driver.switchTo().alert().dismiss();
+
+      //Custom
+
 
    }
 }
