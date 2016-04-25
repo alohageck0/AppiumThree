@@ -6,7 +6,10 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -37,10 +40,13 @@ public class SuauceLabsNativeIOS {
 
    @Test
    public void Test() throws InterruptedException {
+      WebDriverWait wait = new WebDriverWait(driver, 25);
+
       TouchAction touchAction = new TouchAction(driver);
       //Open pickers screen
-      Thread.sleep(3000L);
-      touchAction.tap(driver.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[6]"))).perform();
+      WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[6]")));
+
+      touchAction.tap(element).perform();
 
       //Choose Serena Auroux
       String nameToTest = "Serena Auroux";

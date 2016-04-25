@@ -70,7 +70,7 @@ public class PracticeApp {
 
    }
 
-   //   @Test
+      @Test
    public void Pickers() {
       TouchAction touchAction = new TouchAction(driver);
       //Open pickers screen
@@ -86,7 +86,7 @@ public class PracticeApp {
 
    }
 
-   @Test
+//   @Test
    public void Alerts() throws InterruptedException {
       TouchAction touchAction = new TouchAction(driver);
       //Open Alerts screen
