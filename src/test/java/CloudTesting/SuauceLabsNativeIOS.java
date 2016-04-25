@@ -1,8 +1,11 @@
 package CloudTesting;
 
+import io.appium.java_client.TouchAction;
 import io.appium.java_client.ios.IOSDriver;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.io.File;
@@ -12,7 +15,7 @@ import java.net.URL;
 import java.util.Scanner;
 
 public class SuauceLabsNativeIOS {
-   private DesiredCapabilities capabilities;
+   private DesiredCapabilities capabilities = DesiredCapabilities.iphone();
    private IOSDriver driver;
    private String url = new Scanner(new File("/Users/royalfiish/IdeaProjects/UdemyAppium/src/test/java/CloudTesting/url")).nextLine();
 
@@ -33,7 +36,24 @@ public class SuauceLabsNativeIOS {
    }
 
    @Test
-   public void Test() {
+   public void Test() throws InterruptedException {
+      TouchAction touchAction = new TouchAction(driver);
+      //Open pickers screen
+      Thread.sleep(3000L);
+      touchAction.tap(driver.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[6]"))).perform();
 
+      //Choose Serena Auroux
+      String nameToTest = "Serena Auroux";
+      String numberToTest = "3";
+
+      Thread.sleep(3000L);
+
+      driver.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAPicker[1]/UIAPickerWheel[1]")).sendKeys(nameToTest);
+      driver.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAPicker[1]/UIAPickerWheel[2]")).sendKeys(numberToTest);
+      String result = driver.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAStaticText[1]")).getText();
+      Thread.sleep(3000L);
+
+      Assert.assertEquals(nameToTest + " - " + numberToTest, result);
+      driver.quit();
    }
 }
