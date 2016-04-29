@@ -9,22 +9,24 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 public class ExcelDriver {
+   public static FileInputStream file;
    public static XSSFWorkbook workbook;
    public static XSSFSheet sheet;
    public static XSSFRow row;
    public static XSSFCell cell;
 
    public static void main(String[] args) throws IOException {
-      FileInputStream file = new FileInputStream("/Users/royalfiish/IdeaProjects/UdemyAppium/data.xlsx");
+      file = new FileInputStream("/Users/royalfiish/IdeaProjects/UdemyAppium/data.xlsx");
       workbook = new XSSFWorkbook(file);
-      getCellData(2, 2);
+      String val = getCellData(2, 2);
+      System.out.println(val);
+
    }
 
-   public static void getCellData(int rowNum, int colNum) {
+   public static String getCellData(int rowNum, int colNum) {
       sheet = workbook.getSheet("script");
       row = sheet.getRow(rowNum);
       cell = row.getCell(colNum);
-      String val = cell.getStringCellValue();
-      System.out.println(val);
+      return cell.getStringCellValue();
    }
 }
