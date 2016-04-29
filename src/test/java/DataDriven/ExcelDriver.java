@@ -18,17 +18,18 @@ public class ExcelDriver {
    public static void main(String[] args) throws IOException {
       file = new FileInputStream("/Users/royalfiish/IdeaProjects/UdemyAppium/data.xlsx");
       workbook = new XSSFWorkbook(file);
-      String val = getCellData(2, 2);
+      String val = getCellData(1, 1);
       System.out.println(val);
 
-      setCellData(2,2, "Hello new data");
-      val = getCellData(2, 2);
-      System.out.println(val);
+//      setCellData(2,2, "Hello new data");
+//      val = getCellData(2, 2);
+//      System.out.println(val);
+
 
    }
 
    public static String getCellData(int rowNum, int colNum) {
-      sheet = workbook.getSheet("script");
+      sheet = workbook.getSheet("usernames");
       row = sheet.getRow(rowNum);
       cell = row.getCell(colNum);
       return cell.getStringCellValue();
