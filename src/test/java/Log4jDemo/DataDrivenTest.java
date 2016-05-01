@@ -11,6 +11,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -28,13 +30,13 @@ public class DataDrivenTest {
    WebDriver driver = null;
    Logger logger = Logger.getLogger("DataDrivenTest");
 
-//   @AfterMethod
-//   public void cleanUp(ITestResult result) {
+   @AfterMethod
+   public void cleanUp(ITestResult result) {
 //      if (result.getStatus() == ITestResult.FAILURE) {
 //         logger.log();
 //      }
 //      driver.quit();
-//   }
+   }
 
    @Test(dataProvider = "getData") //dataProvider value should be equal to @DataProvider method name
    public void doLogin(String username, String password) { //no. of parameter = no. of columns
