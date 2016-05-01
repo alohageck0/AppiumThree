@@ -7,6 +7,7 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -19,10 +20,11 @@ public class GmailTest {
    WebDriver driver = null;
 
 
-   //    @Test(dataProvider = )
-//    public void test(){
-//
-//    }
+   @Test(dataProvider = "getData")
+   public void test(String username, String password) {
+      System.out.println(username + " " + password);
+   }
+
    @DataProvider
    public Object[][] getData() throws IOException {
       FileInputStream file = new FileInputStream("/Users/royalfiish/IdeaProjects/UdemyAppium/data.xlsx");
