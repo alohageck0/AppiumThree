@@ -22,6 +22,7 @@ public class GmailTest {
 
    @Test(dataProvider = "getData")
    public void test(String username, String password) {
+      System.out.println();
       System.out.println(username + " " + password);
    }
 
@@ -39,10 +40,11 @@ public class GmailTest {
 
       Object[][] data = new Object[rowCount - 1][columnCount];
 
-      for (int i = 1; i <= rowCount; i++) {
-         for (int j = 0; j <= columnCount; j++) {
-            data[i - 1][j] = getCellData("usernames", i, j);
-//            data[i - 1][j] = sheet.getRow(i).getCell(j).getRawValue();
+      for (int i = 2; i <= rowCount; i++) {
+         for (int j = 0; j < columnCount; j++) {
+            System.out.print(getCellData("usernames", i, j) + " "); // Your sheet name
+
+            data[i - 2][j] = getCellData("usernames", i, j);
          }
       }
       return data;
@@ -68,7 +70,7 @@ public class GmailTest {
          if (cell.getCellType() == Cell.CELL_TYPE_STRING) {
             return cell.getStringCellValue();
          } else if (cell.getCellType() == Cell.CELL_TYPE_NUMERIC || cell.getCellType() == Cell.CELL_TYPE_FORMULA) {
-            return String.valueOf(cell.getNumericCellValue());
+            return String.valueOf((int) cell.getNumericCellValue());
          } else if (cell.getCellType() == Cell.CELL_TYPE_BLANK) {
             return "";
          } else {
