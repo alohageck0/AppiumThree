@@ -35,7 +35,7 @@ public class DataDrivenTest {
 //      if (result.getStatus() == ITestResult.FAILURE) {
 //         logger.log();
 //      }
-//      driver.quit();
+      driver.quit();
    }
 
    @Test(dataProvider = "getData") //dataProvider value should be equal to @DataProvider method name
