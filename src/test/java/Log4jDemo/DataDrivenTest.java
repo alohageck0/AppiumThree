@@ -11,7 +11,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -30,8 +29,9 @@ public class DataDrivenTest {
    WebDriver driver = null;
    Logger logger = Logger.getLogger("DataDrivenTest");
 
+
    @AfterMethod
-   public void cleanUp(ITestResult result) {
+   public void cleanUp() {
 //      if (result.getStatus() == ITestResult.FAILURE) {
 //         logger.log();
 //      }
@@ -42,7 +42,6 @@ public class DataDrivenTest {
    public void doLogin(String username, String password) { //no. of parameter = no. of columns
       PropertyConfigurator.configure("/Users/royalfiish/IdeaProjects/UdemyAppium/log4g.properties");
 
-
       logger.info("Open browser");
       driver = new FirefoxDriver();
       driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -50,12 +49,10 @@ public class DataDrivenTest {
       logger.info("Browser opened. Navigate to gmail.com");
       driver.get("http://gmail.com");
       logger.info("Gmail.com opened. Entering email");
-      try {
-         driver.findElement(By.xpath("//*[@id='Email333']")).sendKeys(username);
-         logger.info("Email entered. Clicking next");
-      } catch (Exception e) {
-         logger.error("Element is not there");
-      }
+
+      driver.findElement(By.xpath("//*[@id='Email333']")).sendKeys(username);
+      logger.info("Email entered. Clicking next");
+
 
       driver.findElement(By.id("next")).click();
       driver.findElement(By.xpath("//*[@id='Passwd']")).sendKeys(password);
