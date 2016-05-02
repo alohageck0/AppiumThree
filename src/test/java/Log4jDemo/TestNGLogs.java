@@ -34,4 +34,6 @@ public class TestNGLogs {
       logger.info("test3 pass");
 
    }
+
+//   todo custom logger for testng
 }
