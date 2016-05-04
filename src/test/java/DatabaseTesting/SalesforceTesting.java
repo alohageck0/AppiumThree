@@ -1,7 +1,9 @@
 package DatabaseTesting;
 
+import ObjectsRepo.LoginPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
@@ -12,6 +14,9 @@ import java.util.Properties;
 public class SalesforceTesting {
    private ResultSet resultSet;
    WebDriver driver = null;
+   String username;
+   String password;
+
 
    @BeforeSuite
    public void setUp() throws SQLException {
@@ -30,6 +35,10 @@ public class SalesforceTesting {
 
       Statement s = connection.createStatement();
       resultSet = s.executeQuery("select * from Credentials where scenario='zerobalancecard';");
+      while (resultSet.next()) {
+         username = resultSet.getString("username");
+         password = resultSet.getString("password");
+      }
    }
 
    @BeforeMethod
@@ -38,8 +47,16 @@ public class SalesforceTesting {
       driver.get("https://login.salesforce.com");
    }
 
+   @AfterMethod
+   public void closeDriver() {
+      driver.quit();
+   }
+
    @Test
    public void testLogin() {
-
+      LoginPage loginPage = new LoginPage(driver);
+      loginPage.usernameField().sendKeys(username);
+      loginPage.passwordField().sendKeys(password);
+      loginPage.loginButton().click();
    }
 }
