@@ -21,10 +21,10 @@ public class JDBCConnection {
       Statement s = connection.createStatement();
       ResultSet resultSet = s.executeQuery("select * from Credentials where scenario='zerobalancecard';");
 
-//      while (resultSet.next()) {
-//         System.out.println(resultSet.getString("username"));
-//         System.out.println(resultSet.getString("password"));
-//      }
+      while (resultSet.next()) {
+         System.out.println(resultSet.getString("username"));
+         System.out.println(resultSet.getString("password"));
+      }
 
    }
 }
