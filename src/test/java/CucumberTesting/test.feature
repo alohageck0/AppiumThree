@@ -4,7 +4,7 @@ Feature: Attitude Matters
   I want to know whom to wish
 
   @tester
-  Scenario: I am an Employee
+  Scenario Outline: I am an Employee
 
     Given I work in late nights
     When I meet watchman
@@ -13,3 +13,13 @@ Feature: Attitude Matters
     Given I work in the mornings
     When I meet newspaper boy
     Then I skip greet him
+
+    Given we work in "<weekday>"
+    When we meet "<guy>"
+    Then I skip greet him
+
+    Examples:
+      | weekday | guy      |
+      | weekday | guy      |
+      | ten     | watchman |
+      | nine    | driver   |

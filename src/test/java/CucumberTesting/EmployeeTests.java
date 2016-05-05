@@ -15,6 +15,15 @@ public class EmployeeTests {
          System.out.println("Mornings automation");
       }
    }
+   @Given("^we work in \"([^\"]*)\"$")
+   public void weWork(String string) {
+      if (string.equals("ten")) {
+         System.out.println("Ten PM automation\n");
+      }
+      if (string.equals("nine")) {
+         System.out.println("Nine PM automation");
+      }
+   }
 
    @When("^I meet ([^\"]*)$")
    public void iMeet(String string) {
@@ -23,6 +32,15 @@ public class EmployeeTests {
       }
       if (string.equals("newspaper boy")) {
          System.out.println("newspaper boy automation");
+      }
+   }
+   @When("^we meet \"([^\"]*)\"$")
+   public void weMeet(String string) {
+      if (string.equals("watchman")) {
+         System.out.println("watchman automation");
+      }
+      if (string.equals("driver")) {
+         System.out.println("driver boy automation");
       }
    }
 
