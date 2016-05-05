@@ -44,6 +44,15 @@ public class EmployeeTests {
       }
    }
 
+//   @When("^we meet \"([^\"]*)\"$")
+//   public void weMeet(String string) {
+//      if (string.equals("watchman")) {
+//         System.out.println("watchman automation");
+//      }
+//      if (string.equals("driver")) {
+//         System.out.println("driver boy automation");
+//      }
+//   }
    @Then("^I ([^\"]*) him$")
    public void action(String string) {
       if (string.equals("greet")) {
