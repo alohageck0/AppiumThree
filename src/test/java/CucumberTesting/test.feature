@@ -20,6 +20,5 @@ Feature: Attitude Matters
 
     Examples:
       | weekday | guy      |
-      | weekday | guy      |
       | ten     | watchman |
       | nine    | driver   |
