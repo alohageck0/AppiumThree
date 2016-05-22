@@ -35,5 +35,5 @@ public class TestNGLogs {
 
    }
 
-//   todo custom logger for testng
+//   todo custom logger for testng extend Logger class
 }
