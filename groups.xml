@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="User management">
+    <test name="P1 tests">
+        <groups>
+            <run>
+                <!--<include name="userCodes"/>-->
+                <include name="smoke"/>
+            </run>
+        </groups>
+        <classes>
+       <class name="TestNGAppium.Java1"/>
+       <class name="TestNGAppium.Java2"/>
+        </classes>
+    </test>
+    <!--<test name="setup panel">-->
+    <!--<groups>-->
+    <!--<run>-->
+    <!--<include name="setupPanel"/>-->
+    <!--</run>-->
+    <!--</groups>-->
+    <!--<classes>-->
+    <!--<class name="SettingsTests.UserManagementTests"/>-->
+    <!--</classes>-->
+    <!--</test>-->
+</suite>
